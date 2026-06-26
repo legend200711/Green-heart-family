@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Green Heart Family</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+html,body{
+width:100%;
+overflow-x:hidden;
+}
+
+body{
+background:#020a02;
+color:#fff;
+}
+
+/* Animated Background */
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at center,
+rgba(0,255,120,.15),
+transparent 70%);
+animation:pulse 8s infinite alternate;
+z-index:-2;
+}
+
+@keyframes pulse{
+from{transform:scale(1);}
+to{transform:scale(1.2);}
+}
+
+/* Floating Hearts */
+.heart{
+position:fixed;
+color:#00ff66;
+opacity:.15;
+font-size:24px;
+animation:float 18s linear infinite;
+z-index:-1;
+pointer-events:none;
+}
+
+@keyframes float{
+0%{
+transform:translateY(110vh) rotate(0deg);
+}
+100%{
+transform:translateY(-120vh) rotate(360deg);
+}
+}
+
+/* Header */
+header{
+text-align:center;
+padding:80px 20px;
+}
+
+h1{
+font-size:4rem;
+color:#00ff66;
+text-shadow:
+0 0 10px #00ff66,
+0 0 20px #00ff66,
+0 0 40px #00ff66;
+}
+
+.tagline{
+margin-top:15px;
+font-size:1.3rem;
+letter-spacing:4px;
+color:#b8ffd0;
+}
+
+/* Navigation */
+nav{
+margin-top:40px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+padding:12px 24px;
+border:2px solid #00ff66;
+border-radius:30px;
+transition:.3s;
+}
+
+nav a:hover{
+background:#00ff66;
+color:black;
+box-shadow:0 0 25px #00ff66;
+transform:translateY(-3px);
+}
+
+/* Sections */
+section{
+max-width:1100px;
+margin:auto;
+padding:60px 20px;
+text-align:center;
+}
+
+section h2{
+font-size:2.5rem;
+color:#00ff66;
+margin-bottom:25px;
+}
+
+/* Mental Health Hero */
+.mental-health{
+margin-top:60px;
+padding:50px 30px;
+border-radius:30px;
+background:rgba(0,255,100,.08);
+border:2px solid rgba(0,255,100,.4);
+backdrop-filter:blur(10px);
+box-shadow:
+0 0 20px rgba(0,255,100,.3),
+0 0 50px rgba(0,255,100,.2),
+0 0 100px rgba(0,255,100,.1);
+animation:greenGlow 4s infinite alternate;
+}
+
+@keyframes greenGlow{
+from{
+box-shadow:
+0 0 20px rgba(0,255,100,.3),
+0 0 50px rgba(0,255,100,.2);
+}
+
+to{
+box-shadow:
+0 0 40px rgba(0,255,100,.6),
+0 0 90px rgba(0,255,100,.3);
+}
+}
+
+.mental-health h2{
+font-size:3rem;
+text-shadow:
+0 0 10px #00ff66,
+0 0 25px #00ff66,
+0 0 50px #00ff66;
+}
+
+.mental-health p{
+font-size:1.2rem;
+line-height:2;
+color:#eaffea;
+max-width:900px;
+margin:auto;
+}
+
+.mental-health strong{
+color:#00ff66;
+text-shadow:0 0 10px #00ff66;
+}
+
+/* Cards */
+.card-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(0,255,100,.3);
+padding:30px;
+border-radius:20px;
+backdrop-filter:blur(8px);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 30px rgba(0,255,100,.5);
+}
+
+.card h2{
+color:#00ff66;
+margin-bottom:15px;
+font-size:2rem;
+}
+
+.card p{
+line-height:1.8;
+}
+
+/* Quote */
+.quote{
+font-size:1.6rem;
+font-style:italic;
+padding:80px 20px;
+color:#d6ffe6;
+text-shadow:0 0 15px rgba(0,255,100,.4);
+}
+
+/* Footer */
+footer{
+text-align:center;
+padding:40px 20px;
+border-top:1px solid rgba(255,255,255,.1);
+color:#88cc99;
+font-size:1.1rem;
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+h1{
+font-size:2.7rem;
+}
+
+.tagline{
+font-size:1rem;
+letter-spacing:2px;
+}
+
+.mental-health h2{
+font-size:2.2rem;
+}
+
+.mental-health p{
+font-size:1rem;
+line-height:1.8;
+}
+
+section h2{
+font-size:2rem;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating Hearts -->
+<div class="heart" style="left:10%;animation-delay:0s;">💚</div>
+<div class="heart" style="left:30%;animation-delay:4s;">💚</div>
+<div class="heart" style="left:50%;animation-delay:8s;">💚</div>
+<div class="heart" style="left:70%;animation-delay:12s;">💚</div>
+<div class="heart" style="left:90%;animation-delay:16s;">💚</div>
+
+<header>
+
+<h1>💚 Green Heart Family 💚</h1>
+
+<p class="tagline">
+FAMILY • LOYALTY • RESPECT
+</p>
+
+<nav>
+<a href="#mission">Mission</a>
+<a href="#family">Family</a>
+<a href="#loyalty">Loyalty</a>
+<a href="#respect">Respect</a>
+</nav>
+
+</header>
+
+<section id="mission">
+
+<h2>Who We Are</h2>
+
+<p style="
+font-size:1.2rem;
+line-height:1.9;
+max-width:900px;
+margin:auto;
+">
+Green Heart Family stands together through every storm.
+We believe that real family is built on trust, loyalty,
+respect, and being there for one another no matter what.
+Blood does not define family—love, support, and unity do.
+</p>
+
+<div class="mental-health">
+
+<h2>💚 Mental Health Matters 💚</h2>
+
+<p>
+At <strong>Green Heart Family</strong>, we proudly advocate
+for mental health and emotional well-being every single day.
+
+No matter how late it is, no matter how difficult the battle,
+or how heavy life becomes, <strong>we answer the phone for each other.</strong>
+
+We believe nobody should ever fight alone.
+
+We listen without judgment, support one another with compassion,
+and remind people that asking for help is a sign of strength,
+never weakness.
+
+Family means showing up.
+
+Loyalty means staying when life gets hard.
+
+Respect means listening, understanding, and lifting each other up.
+
+Whether you are a lifelong member, a close friend,
+or someone reaching out for the very first time,
+know that there is always a place for you here.
+
+<strong>
+Day or night, through joy or pain,
+Green Heart Family will always be here—
+because together, nobody walks alone.
+</strong>
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="card-container">
+
+<div class="card" id="family">
+<h2>💚 Family</h2>
+<p>
+We stand together, celebrate together,
+and help one another through every challenge.
+Real family never leaves anyone behind.
+</p>
+</div>
+
+<div class="card" id="loyalty">
+<h2>🛡 Loyalty</h2>
+<p>
+Loyalty means having each other's backs,
+keeping our promises, and standing together
+through every storm life brings.
+</p>
+</div>
+
+<div class="card" id="respect">
+<h2>🤝 Respect</h2>
+<p>
+Respect builds trust. We listen, support,
+and value every voice within the Green Heart Family.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="quote">
+"Family for life. Loyalty till the end. Respect always.
+And when someone calls for help, we answer."
+</section>
+
+<footer>
+💚 Green Heart Family • Mental Health Advocacy • Nobody Walks Alone • Forever United 💚
+</footer>
+
+</body>
+</html>
