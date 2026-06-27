@@ -18,6 +18,48 @@ width:100%;
 overflow-x:hidden;
 }
 
+/* ===== INTRO SCREEN ===== */
+#intro{
+position:fixed;
+inset:0;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+animation:fadeOut 2s ease forwards;
+animation-delay:4s;
+}
+
+#intro h1{
+font-size:4rem;
+color:#00ff66;
+text-shadow:0 0 20px #00ff66, 0 0 40px #00ff66;
+transform:scale(0.5);
+opacity:0;
+animation:zoomIn 2s ease forwards;
+}
+
+@keyframes zoomIn{
+0%{
+transform:scale(0.3);
+opacity:0;
+letter-spacing:20px;
+}
+100%{
+transform:scale(1.2);
+opacity:1;
+letter-spacing:5px;
+}
+}
+
+@keyframes fadeOut{
+to{
+opacity:0;
+visibility:hidden;
+}
+}
+
 body{
 background:#020a02;
 color:#fff;
@@ -229,6 +271,10 @@ h1{
 font-size:2.7rem;
 }
 
+#intro h1{
+font-size:2.5rem;
+}
+
 .tagline{
 font-size:1rem;
 letter-spacing:2px;
@@ -252,6 +298,11 @@ font-size:2rem;
 </head>
 
 <body>
+
+<!-- CINEMATIC INTRO -->
+<div id="intro">
+<h1>WELCOME IN</h1>
+</div>
 
 <!-- Floating Hearts -->
 <div class="heart" style="left:10%;animation-delay:0s;">💚</div>
@@ -281,12 +332,7 @@ FAMILY • LOYALTY • RESPECT
 
 <h2>Who We Are</h2>
 
-<p style="
-font-size:1.2rem;
-line-height:1.9;
-max-width:900px;
-margin:auto;
-">
+<p style="font-size:1.2rem;line-height:1.9;max-width:900px;margin:auto;">
 Green Heart Family stands together through every storm.
 We believe that real family is built on trust, loyalty,
 respect, and being there for one another no matter what.
@@ -337,28 +383,17 @@ because together, nobody walks alone.
 
 <div class="card" id="family">
 <h2>💚 Family</h2>
-<p>
-We stand together, celebrate together,
-and help one another through every challenge.
-Real family never leaves anyone behind.
-</p>
+<p>We stand together, celebrate together, and help one another through every challenge.</p>
 </div>
 
 <div class="card" id="loyalty">
 <h2>🛡 Loyalty</h2>
-<p>
-Loyalty means having each other's backs,
-keeping our promises, and standing together
-through every storm life brings.
-</p>
+<p>Loyalty means having each other's backs and standing strong through every storm.</p>
 </div>
 
 <div class="card" id="respect">
 <h2>🤝 Respect</h2>
-<p>
-Respect builds trust. We listen, support,
-and value every voice within the Green Heart Family.
-</p>
+<p>Respect builds trust. We listen, support, and value every voice within the family.</p>
 </div>
 
 </div>
@@ -366,8 +401,7 @@ and value every voice within the Green Heart Family.
 </section>
 
 <section class="quote">
-"Family for life. Loyalty till the end. Respect always.
-And when someone calls for help, we answer."
+"Family for life. Loyalty till the end. Respect always. And when someone calls for help, we answer."
 </section>
 
 <footer>
