@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Green Heart Family Comments</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#021002;
+color:#fff;
+padding:0;
+}
+
+/* ===== NAVBAR ===== */
+.pop-nav{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  padding:15px;
+  background:rgba(0, 255, 102, 0.08);
+  border-bottom:1px solid rgba(0,255,100,0.3);
+  backdrop-filter: blur(8px);
+}
+
+.pop-nav a{
+  color:#00ff66;
+  text-decoration:none;
+  font-weight:bold;
+  padding:8px 16px;
+  border-radius:20px;
+  transition:0.2s;
+}
+
+.pop-nav a:hover{
+  background:#00ff66;
+  color:black;
+  box-shadow:0 0 15px #00ff66;
+}
+
+/* ===== MAIN LAYOUT ===== */
+.container{
+max-width:800px;
+margin:auto;
+padding:20px;
+}
+
+h1{
+text-align:center;
+color:#00ff66;
+text-shadow:0 0 20px #00ff66;
+}
+
+input, textarea{
+width:100%;
+padding:15px;
+margin:10px 0;
+border:none;
+border-radius:12px;
+background:#0b1d0b;
+color:white;
+font-size:16px;
+outline:none;
+}
+
+textarea{
+height:120px;
+resize:vertical;
+}
+
+button{
+background:#00ff66;
+color:black;
+border:none;
+padding:14px 24px;
+border-radius:30px;
+font-size:18px;
+cursor:pointer;
+font-weight:bold;
+width:100%;
+}
+
+button:hover{
+box-shadow:0 0 20px #00ff66;
+}
+
+/* ===== COMMENTS ===== */
+.comment{
+margin-top:15px;
+padding:15px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(0,255,100,.3);
+border-radius:15px;
+position:relative;
+}
+
+.comment strong{
+color:#00ff66;
+}
+
+/* delete button hidden */
+.deleteBtn{
+margin-top:10px;
+background:red;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:8px;
+cursor:pointer;
+
+opacity:0;
+transform:translateY(5px);
+transition:0.2s;
+}
+
+/* show only on hover */
+.comment:hover .deleteBtn{
+opacity:1;
+transform:translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="pop-nav">
+  <a href="index.html">Home</a>
+
+</nav>
+
+<div class="container">
+
+<h1>💚 Green Heart Family Comments 💚</h1>
+
+<input id="name" placeholder="Your name">
+<textarea id="message" placeholder="Write something positive..."></textarea>
+<button id="sendBtn">Post Comment</button>
+
+<div id="comments"></div>
+
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+import {
+  getDatabase,
+  ref,
+  push,
+  onValue,
+  remove
+} from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyBY7rOPrAPIbLwVCEVVEx6RiKHiPg6zB2s",
+authDomain: "i69o7-471fa.firebaseapp.com",
+databaseURL: "https://i69o7-471fa-default-rtdb.firebaseio.com",
+projectId: "i69o7-471fa",
+storageBucket: "i69o7-471fa.firebasestorage.app",
+messagingSenderId: "518277277146",
+appId: "1:518277277146:web:d1fe62291dcee379770ce3"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const commentsRef = ref(db, "comments");
+
+// POST COMMENT
+document.getElementById("sendBtn").addEventListener("click", async () => {
+
+  const name = document.getElementById("name").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  if (!name || !message) {
+    alert("Please fill in both fields.");
+    return;
+  }
+
+  await push(commentsRef, {
+    name,
+    message,
+    time: Date.now()
+  });
+
+  document.getElementById("message").value = "";
+});
+
+// LOAD COMMENTS
+onValue(commentsRef, (snapshot) => {
+
+  const data = snapshot.val();
+  const box = document.getElementById("comments");
+
+  box.innerHTML = "";
+
+  if (!data) return;
+
+  Object.entries(data).reverse().forEach(([id, c]) => {
+
+    box.innerHTML += `
+      <div class="comment">
+        <strong>${c.name}</strong>
+        <p>${c.message}</p>
+
+        <button class="deleteBtn" onclick="deleteComment('${id}')">
+          Delete
+        </button>
+      </div>
+    `;
+  });
+});
+
+// DELETE COMMENT
+window.deleteComment = async function(id) {
+  const ok = confirm("Delete this comment?");
+  if (!ok) return;
+
+  await remove(ref(db, "comments/" + id));
+};
+
+</script>
+
+</body>
+</html>
