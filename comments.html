@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Green Heart Family • Comments</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#020a02;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* Header */
+header{
+text-align:center;
+padding:60px 20px;
+}
+
+h1{
+font-size:3rem;
+color:#00ff66;
+text-shadow:0 0 20px #00ff66;
+}
+
+p{
+color:#b8ffd0;
+margin-top:10px;
+}
+
+/* Comment Box */
+.container{
+max-width:900px;
+margin:40px auto;
+padding:20px;
+}
+
+textarea{
+width:100%;
+height:140px;
+padding:15px;
+border-radius:12px;
+border:none;
+outline:none;
+font-size:1rem;
+background:rgba(0,255,100,.08);
+color:white;
+border:1px solid rgba(0,255,100,.3);
+}
+
+button{
+margin-top:10px;
+padding:12px 25px;
+background:#00ff66;
+border:none;
+border-radius:25px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px #00ff66;
+}
+
+/* Comment List */
+.comments{
+margin-top:30px;
+}
+
+.comment{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(0,255,100,.2);
+padding:15px;
+border-radius:12px;
+margin-bottom:10px;
+}
+
+/* Back button */
+.back{
+display:inline-block;
+margin-top:20px;
+text-decoration:none;
+color:#00ff66;
+border:1px solid #00ff66;
+padding:10px 20px;
+border-radius:20px;
+}
+
+.back:hover{
+background:#00ff66;
+color:black;
+}
+.pop-nav{
+    text-align:center;
+    margin:15px 0;
+}
+
+.pop-nav a{
+    color:#00ff88;
+    text-decoration:none;
+    font-weight:bold;
+    padding:8px 14px;
+    border:1px solid #00ff88;
+    border-radius:8px;
+    display:inline-block;
+    transition:0.3s;
+}
+
+.pop-nav a:hover{
+    background:#00ff88;
+    color:#000;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>💬 Green Heart Family Comments</h1>
+<p>Leave a message for the family 💚</p>
+</header>
+<nav class="pop-nav">
+    <a href="greenheartfamly.html">greenheartfamly</a>
+</nav>
+<div class="container">
+
+<textarea id="msg" placeholder="Write your message..."></textarea>
+<br>
+<button onclick="addComment()">Post Comment</button>
+
+<div class="comments" id="comments"></div>
+
+
+
+</div>
+
+<script>
+function addComment(){
+    const msg = document.getElementById("msg");
+    const text = msg.value.trim();
+
+    if(text === "") return;
+
+    const div = document.createElement("div");
+    div.className = "comment";
+    div.textContent = "💚 " + text;
+
+    document.getElementById("comments").prepend(div);
+
+    msg.value = "";
+}
+</script>
+
+<!-- FIREBASE -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAQtw3v-8rCnRGNa_-O5qxprspDvdO72MDU4",
+    authDomain: "green-e5617.firebaseapp.com",
+    databaseURL: "https://green-e5617-default-rtdb.firebaseio.com",
+    projectId: "green-e5617",
+    storageBucket: "green-e5617.firebasestorage.app",
+    messagingSenderId: "81757624925",
+    appId: "1:81757624925:web:92db9cb1c3d839b2a18bb4"
+  };
+
+  const app = initializeApp(firebaseConfig);
+</script>
+
+</body>
+</html>
