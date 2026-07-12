@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Offline – Green Heart Family</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+    .icon { font-size: 5rem; margin-bottom: 20px; animation: pulse 2s infinite alternate; }
+    @keyframes pulse {
+      from { text-shadow: 0 0 10px #00C853; }
+      to   { text-shadow: 0 0 40px #00C853, 0 0 80px #00C853; }
+    }
+    h1 { font-size: 2.5rem; color: #00C853; margin-bottom: 12px; }
+    p  { font-size: 1.1rem; color: #b8ffd0; max-width: 420px; line-height: 1.8; margin-bottom: 30px; }
+    button {
+      padding: 14px 32px;
+      background: transparent;
+      border: 2px solid #00C853;
+      color: #00C853;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover { background: #00C853; color: #000; box-shadow: 0 0 20px #00C853; }
+  </style>
+</head>
+<body>
+  <div class="icon">💚</div>
+  <h1>You're Offline</h1>
+  <p>It looks like you lost your connection. Green Heart Family will be right here when you're back online.</p>
+  <button onclick="location.reload()">Try Again</button>
+</body>
+</html>
