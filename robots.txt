@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /Green-heart-family/
-
-Sitemap: https://legend200711.github.io/Green-heart-family/sitemap.xml
