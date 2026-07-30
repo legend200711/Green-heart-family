@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Green Heart Family Comments</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#00ff66">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Green Heart Family">
 
 <style>
 body{
@@ -222,5 +228,10 @@ window.deleteComment = async function(id) {
 
 </script>
 
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
+</script>
 </body>
 </html>
